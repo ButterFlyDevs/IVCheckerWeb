@@ -1,0 +1,15 @@
+{
+  "name": "ivcheckerweb",
+  "authors": [
+    "Juan Antonio  <juan.antonio.fernandez.sanchez.88@gmail.com>"
+  ],
+  "version": "0.0.1",
+  "dependencies": {
+    "angular": "1.5.8",
+    "angular-resource": "1.4.9",
+    "angular-ui-router": "^0.4.2"
+  },
+  "resolutions": {
+    "angular": "1.5.8"
+  }
+}

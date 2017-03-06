@@ -18,3 +18,4 @@ hs_err_pid*
 # Google App Engine SDK
 google_appengine/
 
+/app/vendor/

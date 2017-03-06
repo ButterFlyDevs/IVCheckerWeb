@@ -6,6 +6,12 @@ api_version: 1
 
 handlers:
 
+  # Define the home of the app
 - url: (.*)/
-  static_files: views/index.html
+  static_files: ../app\1/views/index.html
+  upload: app
+
+  # Link to static files like javascript libraries
+- url: (.*)
+  static_files: ../app\1
   upload: app

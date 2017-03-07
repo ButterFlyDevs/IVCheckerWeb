@@ -1,6 +1,6 @@
 // Main module of app
 
-angular.module('main', ['ui.router', 'admin','game', 'ranking', 'verbs']);
+    angular.module('main', ['ui.router', 'admin', 'game', 'ranking', 'verbs']);
 
 angular.module('main').config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/home');
@@ -14,5 +14,8 @@ angular.module('main').config(function ($stateProvider, $urlRouterProvider) {
 });
 
 angular.module('main').controller('AppCtrl', function ($scope) {
+
+
     console.log('Activating main module controller');
 });
+

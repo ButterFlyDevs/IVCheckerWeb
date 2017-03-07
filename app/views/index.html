@@ -11,6 +11,7 @@
     #       StyleSheets  Dependencies       #
     ##################################### -->
 
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
     <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css"/>
 
 
@@ -20,6 +21,7 @@
 
     <script src="vendor/jquery/dist/jquery.js"></script>
     <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <scrint src="vendor/angular-bootstrap/ui-bootstrap-tpls.min.js"></scrint>
 
     <script src="../vendor/angular/angular.min.js"></script>
     <script src="../vendor/angular-resource/angular-resource.min.js"></script>
@@ -30,6 +32,7 @@
 
     <!-- Admin module -->
     <script src="../js/admin/admin.module.js"></script>
+    <script src="../js/admin/admin.js"></script>
 
     <!-- Game module -->
     <script src="../js/game/game.module.js"></script>
@@ -39,13 +42,57 @@
 
     <!-- Verbs module -->
     <script src="../js/verbs/verbs.module.js"></script>
+    <script src="../js/verbs/verbs.js"></script>
+    <script src="../js/verbs/verbs.service.js"></script>
+
+
+    <script type='text/javascript'>
+
+function startApp() {
+
+    console.log('googleOnLoadCallback is calling');
+    var apisToLoad = 1; // must match number of calls to gapi.client.load()
+    var gCallback = function () {
+        if (--apisToLoad == 0) {
+            //Manual bootstraping of the application
+            var $injector = angular.bootstrap(document, ['main']);
+            console.log('Angular bootstrap complete ');
+            console.log('Librería gAPI cargada: ');
+            console.log(gapi);
+
+        }
+        ;
+    };
+
+    var ROOT;
+
+    if (document.location.hostname == "localhost") {
+        ROOT = 'http://localhost:8001/_ah/api';
+        console.log('Conectando con APIGateway en localhost');
+    } else {
+        ROOT = 'https://sms-backend.appspot.com/_ah/api';
+        console.log('Conectando con APIGateway en sms-backend');
+    }
+    gapi.client.load('helloworld', 'v1', gCallback, ROOT);
+
+
+
+
+}
+
+</script>
+
+    <!-- Cargamos el conector de gAPI, y llamamos cuando se carga a googleOnLoadCallback para
+   que llame al host donde tenemos la gAPI, la carge y la deje disponible para el resto de la APP. -->
+   <script src="https://apis.google.com/js/client.js?onload=startApp"></script>
+
 
 
 </head>
 
 <body>
 
-<div ng-app="main" ng-controller="AppCtrl" ng-cloak>
+<div ng-controller="AppCtrl" ng-cloak>
 
     <!--Place when we will have the nested views, we will inject our code. -->
     <div ui-view></div>

@@ -1,44 +1,82 @@
-<div class="container">
+<div ng-controller="adminController as vm">
+    <div class="container">
 
-    <div class="page-header">
-        <h1>Admin page</h1>
-        <p class="lead">Where insert, modify or delete any verb in the lists.</p>
+        <div class="page-header">
+            <h1>{{vm.title}}</h1>
+            <p class="lead">Where insert, modify or delete any verb in the lists.</p>
+        </div>
+
+
+        <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-primary active" ng-click="vm.changeList(1)">
+                <input type="radio" name="options" id="option1" autocomplete="off" checked> Easy
+            </label>
+            <label class="btn btn-primary" ng-click="vm.changeList(2)">
+                <input type="radio" name="options" id="option2" autocomplete="off"> Medium
+            </label>
+            <label class="btn btn-primary" ng-click="vm.changeList(3)">
+                <input type="radio" name="options" id="option3" autocomplete="off"> Hard
+            </label>
+        </div>
+
+        <br>
+        <br>
+
+
+        <div ng-if="vm.verbsList">
+            <table class="table table-striped">
+                <tr>
+                    <th>Infinitive</th>
+                    <th>Past Simple</th>
+                    <th>Past Participle</th>
+                    <th>    </th>
+                </tr>
+                <tr ng-repeat="verb in vm.verbsList.verbs">
+                    <td>{{verb.infinitive}}</td>
+                    <td>{{verb.pastSimple}}</td>
+                    <td>{{verb.pastParticiple}}</td>
+                    <td>
+                     <button type="button" class="btn " aria-label="Left Align">
+                         <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
+
+                     </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div ng-if="!vm.verbsList">
+
+            Don't saved any verb yet.
+            Do you want insert one?
+
+        </div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
     </div>
+  </div>
+</div>
 
 
-    <div class="btn-group" data-toggle="buttons">
-        <label class="btn btn-primary active">
-            <input type="radio" name="options" id="option1" autocomplete="off" checked> Easy
-        </label>
-        <label class="btn btn-primary">
-            <input type="radio" name="options" id="option2" autocomplete="off"> Medium
-        </label>
-        <label class="btn btn-primary">
-            <input type="radio" name="options" id="option3" autocomplete="off"> Hard
-        </label>
-    </div>
+    </div> <!-- /container -->
 
-    <br>
-    <br>
-
-    <table class="table table-striped">
-        <tr>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Age</th>
-        </tr>
-        <tr>
-            <td>Jill</td>
-            <td>Smith</td>
-            <td>50</td>
-        </tr>
-        <tr>
-            <td>Eve</td>
-            <td>Jackson</td>
-            <td>94</td>
-        </tr>
-    </table>
-
-
-</div> <!-- /container -->
-
+</div>

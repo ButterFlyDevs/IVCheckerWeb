@@ -1,10 +1,22 @@
-<div class="container">
+<div ng-controller="verbsController as vm">
+    <div class="container">
 
-    <div class="page-header">
-        <h1>Verb lists consult page</h1>
-    </div>
+        <div class="page-header">
+            <h1>{{vm.title}}</h1>
+        </div>
 
+        <table class="table table-striped">
+            <tr>
+                <th>Infinitive</th>
+                <th>Past Simple</th>
+                <th>Past Participle</th>
+            </tr>
+            <tr ng-repeat="verb in vm.verbsList.verbs">
+                <td>{{verb.infinitive}}</td>
+                <td>{{verb.pastSimple}}</td>
+                <td>{{verb.pastParticiple}}</td>
+            </tr>
+        </table>
 
-
-</div> <!-- /container -->
-
+    </div> <!-- /container -->
+</div>
